@@ -276,11 +276,13 @@
 						zones[nb_zones] = new Array(zone,com);
 						nb_zones++;
 						nb_polys = 0;
-					for(i = 0; i < nb_zones; i++)
+					for(var i = 0; i < nb_zones; i++)
 					{
 						index = i;
-						texte += 'zone ' + i + ' : ' + zones[i][1] +'  '+ '<button onclick="modifCom(index)">Modifier</button>' + '<br />';
+						texte += 'zone ' + i + ' : ' + zones[i][1] +'  '+ '<button onclick="modifCom('+index+')">Modifier</button>' + '<br />';
 					}
+					console.log("com:" + com[0]); // premier caractere
+					console.log("zones:" + zones[0]);
 					info.innerHTML = texte;
 					texte = '';
 					}
@@ -362,8 +364,18 @@
 			
 			function modifCom(ind)
 			{
+					//com = document.getElementById('');
 					//alert('test modif com');
 					zones[ind][1] = prompt("modifier le commentaire : ", zones[ind][1]);
+					
+					for(var i = 0; i < nb_zones; i++)
+					{
+						index = i;
+						texte += 'zone ' + i + ' : ' + zones[i][1] +'  '+ '<button onclick="modifCom('+index+')">Modifier</button>' + '<br />';
+					}
+					
+					info.innerHTML = texte;
+					texte = '';
 					
 			}
 
